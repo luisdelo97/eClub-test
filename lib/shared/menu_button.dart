@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class MenuButton extends StatelessWidget {
   final Color color;
@@ -21,14 +21,10 @@ class MenuButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(6),
             border: Border.all(color: color),
           ),
-          child: SvgPicture.asset(
-            'assets/vectors/menu.svg',
-            colorFilter: ColorFilter.mode(
-              color,
-              BlendMode.srcIn,
-            ),
-            width: 24,
-            height: 24,
+          child: SvgIcon(
+            nameSvg: 'menu.svg',
+            color: color,
+            size: 24,
           ),
         ),
       ),

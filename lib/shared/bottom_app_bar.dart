@@ -1,6 +1,6 @@
-import 'package:eclub/router.dart';
+import 'package:eclub/color_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class BottomNavWithQR extends StatelessWidget {
   final int currentIndex;
@@ -15,7 +15,7 @@ class BottomNavWithQR extends StatelessWidget {
   });
 
   Widget _buildNavItem({
-    required String path,
+    required String nameSvg,
     required String label,
     required int itemIndex,
     required BuildContext context,
@@ -31,14 +31,10 @@ class BottomNavWithQR extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
-            path,
-            colorFilter: ColorFilter.mode(
-              color,
-              BlendMode.srcIn,
-            ),
-            width: 30,
-            height: 30,
+          SvgIcon(
+            nameSvg: nameSvg,
+            color: color,
+            size: 30,
           ),
           const SizedBox(height: 4),
           Text(
@@ -66,15 +62,10 @@ class BottomNavWithQR extends StatelessWidget {
           color: primaryColor,
           shape: BoxShape.circle,
         ),
-        child: SvgPicture.asset(
-          'assets/vectors/qr.svg',
-          colorFilter: const ColorFilter.mode(
-            Colors.white,
-            BlendMode.srcIn,
-          ),
-          width: 40,
-          height: 40,
-          semanticsLabel: 'Escanear QR',
+        child: const SvgIcon(
+          nameSvg: 'qr.svg',
+          color: Colors.white,
+          size: 40,
         ),
       ),
     );
@@ -103,26 +94,26 @@ class BottomNavWithQR extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildNavItem(
-            path: 'assets/vectors/home.svg',
+            nameSvg: 'home.svg',
             label: 'Inicio',
             itemIndex: 0,
             context: context,
           ),
           _buildNavItem(
-            path: 'assets/vectors/double_arrow.svg',
+            nameSvg: 'double_arrow.svg',
             label: 'Transferir',
             itemIndex: 1,
             context: context,
           ),
           if (showQRButton) _buildQRButton(context),
           _buildNavItem(
-            path: 'assets/vectors/plot_cake.svg',
+            nameSvg: 'plot_cake.svg',
             label: 'Análisis',
             itemIndex: 2,
             context: context,
           ),
           _buildNavItem(
-            path: 'assets/vectors/user.svg',
+            nameSvg: 'user.svg',
             label: 'Cuenta',
             itemIndex: 3,
             context: context,

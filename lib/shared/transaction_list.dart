@@ -1,6 +1,6 @@
 import 'package:eclub/formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class TransactionList extends StatelessWidget {
   const TransactionList({super.key, required this.transactions});
@@ -68,14 +68,10 @@ class TransactionItem extends StatelessWidget {
                 color: Colors.white,
               ),
               padding: const EdgeInsets.all(6),
-              child: SvgPicture.asset(
-                'assets/vectors/$nameSvg',
-                colorFilter: ColorFilter.mode(
-                  color,
-                  BlendMode.srcIn,
-                ),
-                width: 25,
-                height: 25,
+              child: SvgIcon(
+                nameSvg: nameSvg,
+                color: color,
+                size: 25,
               ),
             ),
             Expanded(

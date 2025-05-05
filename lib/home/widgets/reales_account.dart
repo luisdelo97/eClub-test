@@ -1,6 +1,6 @@
-import 'package:eclub/router.dart';
+import 'package:eclub/color_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class RealesAccount extends StatelessWidget {
   const RealesAccount({
@@ -26,21 +26,17 @@ class RealesAccount extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Rs. 2.000',
                   style: TextStyle(fontSize: 25),
                 ),
-                SvgPicture.asset(
-                  'assets/vectors/expand.svg',
-                  colorFilter: const ColorFilter.mode(
-                    primaryColor,
-                    BlendMode.srcIn,
-                  ),
-                  width: 35,
-                  height: 35,
+                SvgIcon(
+                  nameSvg: 'expand.svg',
+                  color: primaryColor,
+                  size: 35,
                 ),
               ],
             ),

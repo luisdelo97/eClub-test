@@ -1,14 +1,14 @@
-import 'package:eclub/router.dart';
+import 'package:eclub/color_theme.dart';
+import 'package:eclub/shared/menu_button.dart';
+import 'package:eclub/shared/svg_icon.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class AnalisisView extends StatelessWidget {
   const AnalisisView({super.key});
 
   Widget _buildSvgButton({
-    required String svgPath,
+    required String nameSvg,
     required String label,
     required Color svgColor,
     VoidCallback? onTap,
@@ -27,14 +27,10 @@ class AnalisisView extends StatelessWidget {
             spacing: 6,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset(
-                svgPath,
-                colorFilter: ColorFilter.mode(
-                  svgColor,
-                  BlendMode.srcIn,
-                ),
-                width: 40,
-                height: 40,
+              SvgIcon(
+                nameSvg: nameSvg,
+                color: svgColor,
+                size: 40,
               ),
               Text(
                 label,
@@ -60,30 +56,9 @@ class AnalisisView extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: surfaceColor,
-        actions: [
-          Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(),
-                ),
-                child: SvgPicture.asset(
-                  'assets/vectors/menu.svg',
-                  colorFilter: const ColorFilter.mode(
-                    onSurfaceColor,
-                    BlendMode.srcIn,
-                  ),
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 20),
+        actions: const [
+          MenuButton(color: onSurfaceColor),
+          SizedBox(width: 20),
         ],
       ),
       body: Padding(
@@ -99,14 +74,10 @@ class AnalisisView extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Colors.white,
               ),
-              child: SvgPicture.asset(
-                'assets/vectors/plot_cake.svg',
-                colorFilter: const ColorFilter.mode(
-                  secondaryColor,
-                  BlendMode.srcIn,
-                ),
-                width: 65,
-                height: 65,
+              child: const SvgIcon(
+                nameSvg: 'plot_cake.svg',
+                color: secondaryColor,
+                size: 65,
               ),
             ),
             const Text(
@@ -119,12 +90,12 @@ class AnalisisView extends StatelessWidget {
               children: [
                 _buildSvgButton(
                   svgColor: secondaryColor,
-                  svgPath: 'assets/vectors/credit_card.svg',
+                  nameSvg: 'credit_card.svg',
                   label: 'Ingresos',
                 ),
                 _buildSvgButton(
                   svgColor: secondaryColor,
-                  svgPath: 'assets/vectors/wallet.svg',
+                  nameSvg: 'wallet.svg',
                   label: 'Gastos',
                   onTap: () {
                     context.pushNamed('gastos');

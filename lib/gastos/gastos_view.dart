@@ -1,10 +1,10 @@
-import 'package:eclub/chart.dart';
+import 'package:eclub/color_theme.dart';
+import 'package:eclub/shared/chart.dart';
 import 'package:eclub/gastos/widgets/extracto_button.dart';
 import 'package:eclub/gastos/widgets/gatos_data.dart';
-import 'package:eclub/gastos/widgets/menu_button.dart';
+import 'package:eclub/shared/menu_button.dart';
 import 'package:eclub/gastos/widgets/month_list.dart';
-import 'package:eclub/home/widgets/transaction_list.dart';
-import 'package:eclub/router.dart';
+import 'package:eclub/shared/transaction_list.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

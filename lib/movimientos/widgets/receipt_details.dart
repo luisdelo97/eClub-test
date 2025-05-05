@@ -1,5 +1,5 @@
+import 'package:eclub/color_theme.dart';
 import 'package:eclub/formatter.dart';
-import 'package:eclub/router.dart';
 import 'package:flutter/material.dart';
 
 class ReceiptDetails extends StatelessWidget {

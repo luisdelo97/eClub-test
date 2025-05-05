@@ -1,13 +1,17 @@
-import 'package:eclub/router.dart';
+import 'package:eclub/color_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class NotificationBanner extends StatelessWidget {
   const NotificationBanner({super.key});
 
-  Widget _buildBanner({required String text, required String iconSvgPath}) {
+  Widget _buildBanner({
+    required String text,
+    required String nameSvg,
+    required Color backgroundColor,
+  }) {
     return Material(
-      color: primaryColor,
+      color: backgroundColor,
       borderRadius: BorderRadius.circular(8),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -33,14 +37,10 @@ class NotificationBanner extends StatelessWidget {
               ),
 
               // 3. Icono a la derecha
-              SvgPicture.asset(
-                iconSvgPath,
-                width: 35,
-                height: 35,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
+              SvgIcon(
+                nameSvg: nameSvg,
+                color: Colors.white,
+                size: 35,
               )
             ],
           ),
@@ -53,14 +53,17 @@ class NotificationBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final notifications = [
       _buildBanner(
-        iconSvgPath: 'assets/vectors/air_paper.svg',
+        backgroundColor: primaryColor,
+        nameSvg: 'air_paper.svg',
         text:
-            'Nombre promoción de dos o tres lfdfdfdfdfdfdfdfdfsfsdfdsfsfsfsfsfsfsfsfsfsfsdffdfdfdfdfdfdffdfsfsdínea',
+            'Nombre promoción de dos o tres líneas lorem ipsum lorem ipsum dolor sit amet',
       ),
       _buildBanner(
-          iconSvgPath: 'assets/vectors/double_face.svg',
-          text:
-              'Nombre promoción de dos o tres lfdfdfdfdfdfdfdfdfsfsdfdsfsfsfsfsfsfsfsfsfsfsdffdfdfdfdfdfdffdfsfsdínea'),
+        backgroundColor: secondaryColor,
+        nameSvg: 'double_face.svg',
+        text:
+            'Nombre promoción de dos o tres líneas lorem ipsum lorem ipsum dolor sit amet',
+      ),
     ];
 
     return Padding(

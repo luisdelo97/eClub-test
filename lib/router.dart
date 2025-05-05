@@ -1,20 +1,12 @@
 import 'package:eclub/analisis/analisis_view.dart';
-import 'package:eclub/bottom_app_bar.dart';
-import 'package:eclub/chart.dart';
+import 'package:eclub/color_theme.dart';
+import 'package:eclub/shared/bottom_app_bar.dart';
 import 'package:eclub/gastos/gastos_view.dart';
+import 'package:eclub/shared/menu_button.dart';
 import 'package:eclub/home/home_view.dart';
 import 'package:eclub/movimientos/movimientos_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-const surfaceColor = Color(0xFFF7F0ED);
-const primaryColor = Color(0xFFDF0A5D);
-const secondaryColor = Color(0xFFFF6720);
-const terciaryColor = Color(0xFFFF9E1B);
-const onSurfaceColor = Color(0xFF888787);
-const onBackgroundColor = Color(0xFFCACACA);
-const restaurantColor = Color(0xFFDAB0F8);
-const shoppingColor = Color(0xFFA9B6FC);
 
 final router = GoRouter(
   initialLocation: '/',
@@ -38,17 +30,9 @@ final router = GoRouter(
             GoRoute(
               path: '/transferir',
               name: 'transferir',
-              builder: (context, state) => const _NavigateView(),
-              routes: [
-                GoRoute(
-                  path: ':id',
-                  name: 'transferir_id',
-                  builder: (context, state) {
-                    final id = state.pathParameters['id'];
-                    return _NavigateView(index: int.parse(id!));
-                  },
-                )
-              ],
+              builder: (context, state) => const _NavigateView(
+                title: 'Transferir',
+              ),
             ),
           ],
         ),
@@ -66,7 +50,7 @@ final router = GoRouter(
             GoRoute(
               path: '/cuenta',
               name: 'cuenta',
-              builder: (context, state) => const _NavigateView(),
+              builder: (context, state) => const _NavigateView(title: 'Cuenta'),
             ),
           ],
         ),
@@ -105,24 +89,28 @@ final router = GoRouter(
 );
 
 class _NavigateView extends StatelessWidget {
-  final int? index;
-  const _NavigateView({this.index});
+  final String title;
+  const _NavigateView({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Transferir',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
       backgroundColor: surfaceColor,
-      body: DoughnutChart(
-        index: index,
-        centerTitle: 'Julio',
-        centerSubtitle: 374500,
+      appBar: AppBar(
+        title: Text(title),
+        titleTextStyle: const TextStyle(
+          fontSize: 18,
+          color: onSurfaceColor,
+          fontWeight: FontWeight.bold,
+        ),
+        centerTitle: true,
+        backgroundColor: surfaceColor,
+        actions: const [
+          MenuButton(color: onSurfaceColor),
+          SizedBox(width: 20),
+        ],
       ),
+      body: const SizedBox.shrink(),
     );
   }
 }
@@ -141,9 +129,18 @@ class MainWrapper extends StatelessWidget {
         currentIndex: childView.currentIndex,
         onTap: (index) => childView.goBranch(index),
         onQRPressed: () {
-          print("Botón QR presionado (desde MainWrapper)");
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Acción QR')),
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('QR Code Scanner'),
+              content: const Text('QR Code Scanner is not implemented yet.'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Close'),
+                ),
+              ],
+            ),
           );
         },
       ),

@@ -1,8 +1,8 @@
+import 'package:eclub/color_theme.dart';
 import 'package:eclub/home/widgets/header_button_action.dart';
 import 'package:eclub/home/widgets/notification_banner.dart';
 import 'package:eclub/home/widgets/reales_account.dart';
-import 'package:eclub/home/widgets/transaction_list.dart';
-import 'package:eclub/router.dart';
+import 'package:eclub/shared/transaction_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {

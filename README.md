@@ -59,12 +59,12 @@ Sigue estos pasos para generar la APK de Android:
 ## Estructura del proyecto
 
 - [`lib`](lib): Contiene el código fuente principal de la aplicación. Cada subcarpeta dentro de `lib` representa una pantalla o funcionalidad principal de la aplicación. A continuación, se detalla la estructura:
-  - [`analisis`](lib/analisis): Contiene la pantalla de análisis, junto con sus widgets específicos.
+  - [`analisis`](lib/analisis): Contiene la pantalla de análisis.
   - [`gastos`](lib/gastos): Contiene la pantalla de gastos, con una subcarpeta `widgets` para los componentes reutilizables de esta pantalla.
   - [`home`](lib/home): Contiene la pantalla principal de inicio, con una subcarpeta `widgets` para los componentes específicos de esta pantalla.
   - [`movimientos`](lib/movimientos): Contiene la pantalla de movimientos, con una subcarpeta `widgets` para los widgets relacionados.
-  - [`bottom_app_bar.dart`](lib/bottom_app_bar.dart): Implementa la barra de navegación inferior.
-  - [`chart.dart`](lib/chart.dart): Contiene la lógica y los widgets para los gráficos utilizados en la aplicación.
+  - [`shared`](lib/shared): Contiene componentes compartidos entre diferentes pantallas.
+  - [`color_theme.dart`](lib/color_theme.dart): Define los colores principales y secundarios utilizados en la aplicación.
   - [`formatter.dart`](lib/formatter.dart): Incluye utilidades para formatear datos.
   - [`main.dart`](lib/main.dart): Punto de entrada principal de la aplicación.
   - [`router.dart`](lib/router.dart): Configuración de las rutas y navegación de la aplicación.

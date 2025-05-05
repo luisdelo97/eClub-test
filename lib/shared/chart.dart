@@ -1,5 +1,6 @@
 import 'package:eclub/formatter.dart';
 import 'package:eclub/gastos/widgets/gatos_data.dart';
+import 'package:eclub/shared/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -86,11 +87,31 @@ class _DoughnutChartState extends State<DoughnutChart> {
               builder: (data, point, series, pointIndex, seriesIndex) {
                 final pointData = _chartData[pointIndex];
                 return switch (pointData.x) {
-                  'Restaurantes y Bares' => const Icon(Icons.restaurant),
-                  'Compras' => const Icon(Icons.shopping_cart),
-                  'Transporte' => const Icon(Icons.directions_bus),
-                  'Entretenimiento' => const Icon(Icons.movie),
-                  _ => const Icon(Icons.no_accounts),
+                  'Restaurantes y Bares' => SvgIcon(
+                      nameSvg: pointData.nameSvg,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  'Compras' => SvgIcon(
+                      nameSvg: pointData.nameSvg,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  'Transporte' => SvgIcon(
+                      nameSvg: pointData.nameSvg,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  'Entretenimiento' => SvgIcon(
+                      nameSvg: pointData.nameSvg,
+                      color: Colors.white,
+                      size: 25,
+                    ),
+                  _ => SvgIcon(
+                      nameSvg: pointData.nameSvg,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                 };
               },
             ),
@@ -119,14 +140,16 @@ class _DoughnutChartState extends State<DoughnutChart> {
           e.category,
           e.total,
           e.color,
+          e.nameSvg,
         ),
       )
       .toList();
 }
 
 class ChartData {
-  ChartData(this.x, this.y, this.color);
+  ChartData(this.x, this.y, this.color, this.nameSvg);
   final String x;
   final double y;
   final Color color;
+  final String nameSvg;
 }

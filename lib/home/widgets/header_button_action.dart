@@ -1,10 +1,10 @@
-import 'package:eclub/router.dart';
+import 'package:eclub/color_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:eclub/shared/svg_icon.dart';
 
 class HeaderButtonActions extends StatelessWidget {
   const HeaderButtonActions({super.key});
-  Widget _buildAction({required String label, required String path}) {
+  Widget _buildAction({required String label, required String nameSvg}) {
     return Column(
       spacing: 10,
       mainAxisSize: MainAxisSize.min,
@@ -20,14 +20,10 @@ class HeaderButtonActions extends StatelessWidget {
             splashColor: primaryColor.withAlpha((0.3 * 255).toInt()),
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: SvgPicture.asset(
-                path,
-                colorFilter: const ColorFilter.mode(
-                  primaryColor,
-                  BlendMode.srcIn,
-                ),
-                width: 30,
-                height: 30,
+              child: SvgIcon(
+                nameSvg: nameSvg,
+                color: primaryColor,
+                size: 30,
               ),
             ),
           ),
@@ -53,19 +49,19 @@ class HeaderButtonActions extends StatelessWidget {
       children: [
         _buildAction(
           label: 'Convertir R\$',
-          path: 'assets/vectors/double_arrow.svg',
+          nameSvg: 'double_arrow.svg',
         ),
         _buildAction(
           label: 'Recargas',
-          path: 'assets/vectors/credit_card.svg',
+          nameSvg: 'credit_card.svg',
         ),
         _buildAction(
           label: 'Creditos',
-          path: 'assets/vectors/wallet.svg',
+          nameSvg: 'wallet.svg',
         ),
         _buildAction(
           label: 'Pagos',
-          path: 'assets/vectors/document.svg',
+          nameSvg: 'document.svg',
         ),
       ],
     );
